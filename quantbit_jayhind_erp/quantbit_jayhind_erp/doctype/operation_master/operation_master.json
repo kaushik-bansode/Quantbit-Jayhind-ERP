@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "OPR - .#######",
+ "creation": "2024-10-29 09:13:05.111741",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "operation_code",
+  "operation_cost",
+  "column_break_bncm",
+  "operation_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "operation_code",
+   "fieldtype": "Data",
+   "label": "Operation Code"
+  },
+  {
+   "fieldname": "column_break_bncm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "operation_name",
+   "fieldtype": "Data",
+   "label": "Operation Name"
+  },
+  {
+   "fieldname": "operation_cost",
+   "fieldtype": "Float",
+   "label": "Operation Cost"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-10-29 17:22:58.664683",
+ "modified_by": "Administrator",
+ "module": "Quantbit Jayhind Erp",
+ "name": "Operation Master",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

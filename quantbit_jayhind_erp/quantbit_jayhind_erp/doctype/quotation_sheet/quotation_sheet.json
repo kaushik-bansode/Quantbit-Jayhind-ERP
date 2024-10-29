@@ -1,0 +1,182 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "QST - .####### ",
+ "creation": "2024-10-29 09:24:32.754241",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "shape_info_section",
+  "shape",
+  "column_break_ucj8",
+  "grade",
+  "column_break_tren",
+  "density",
+  "section_break_asv0",
+  "length",
+  "inner_diameter",
+  "column_break_xqlz",
+  "breadth",
+  "outer_diameter",
+  "column_break_lopp",
+  "height",
+  "section_break_gujn",
+  "weight",
+  "column_break_myle",
+  "quantity",
+  "section_break_hqdv",
+  "operation_details",
+  "section_break_ljrk",
+  "raw_item_rate",
+  "column_break_rfnn",
+  "cost"
+ ],
+ "fields": [
+  {
+   "fieldname": "shape",
+   "fieldtype": "Link",
+   "label": "Shape",
+   "options": "Shape"
+  },
+  {
+   "depends_on": "eval:doc.shape == \"Rectangle\"",
+   "fieldname": "length",
+   "fieldtype": "Float",
+   "label": "Length"
+  },
+  {
+   "fieldname": "grade",
+   "fieldtype": "Link",
+   "label": "Grade",
+   "options": "Grade"
+  },
+  {
+   "fieldname": "column_break_xqlz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.shape == \"Circle\";",
+   "fieldname": "inner_diameter",
+   "fieldtype": "Float",
+   "label": "Inner Diameter"
+  },
+  {
+   "depends_on": "eval:doc.shape == \"Rectangle\"",
+   "fieldname": "breadth",
+   "fieldtype": "Float",
+   "label": "Breadth"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight"
+  },
+  {
+   "fieldname": "column_break_lopp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.shape == \"Circle\";",
+   "fieldname": "outer_diameter",
+   "fieldtype": "Float",
+   "label": "Outer Diameter"
+  },
+  {
+   "fieldname": "height",
+   "fieldtype": "Float",
+   "label": "Height"
+  },
+  {
+   "fieldname": "cost",
+   "fieldtype": "Float",
+   "label": "Finished Item Rate"
+  },
+  {
+   "fieldname": "section_break_hqdv",
+   "fieldtype": "Section Break",
+   "label": "Operation/Machine"
+  },
+  {
+   "fieldname": "operation_details",
+   "fieldtype": "Table",
+   "label": "Operation Details",
+   "options": "Qutotation Sheet Operation Details"
+  },
+  {
+   "fieldname": "density",
+   "fieldtype": "Float",
+   "label": "Density"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "label": "Quantity"
+  },
+  {
+   "fieldname": "raw_item_rate",
+   "fieldtype": "Float",
+   "label": "Raw Item Rate"
+  },
+  {
+   "fieldname": "section_break_asv0",
+   "fieldtype": "Section Break",
+   "label": "Dimensions"
+  },
+  {
+   "fieldname": "column_break_ucj8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_tren",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ljrk",
+   "fieldtype": "Section Break",
+   "label": "Rate Details"
+  },
+  {
+   "fieldname": "column_break_rfnn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_gujn",
+   "fieldtype": "Section Break",
+   "label": "Weight Details"
+  },
+  {
+   "fieldname": "column_break_myle",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shape_info_section",
+   "fieldtype": "Section Break",
+   "label": "Shape Info"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-10-29 17:34:15.732814",
+ "modified_by": "Administrator",
+ "module": "Quantbit Jayhind Erp",
+ "name": "Quotation Sheet",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
