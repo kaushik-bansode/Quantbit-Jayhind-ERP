@@ -8,10 +8,14 @@
  "field_order": [
   "shape_info_section",
   "shape",
+  "shrinkage_factor",
   "column_break_ucj8",
   "grade",
+  "total_wastage_in_kg",
   "column_break_tren",
   "density",
+  "is_strip",
+  "is_machining_required",
   "section_break_asv0",
   "length",
   "inner_diameter",
@@ -23,6 +27,8 @@
   "section_break_gujn",
   "weight",
   "column_break_myle",
+  "finished_material_weight_in_kg",
+  "column_break_jrau",
   "quantity",
   "section_break_hqdv",
   "operation_details",
@@ -69,7 +75,8 @@
   {
    "fieldname": "weight",
    "fieldtype": "Float",
-   "label": "Weight"
+   "label": "Raw Material Weight (in KG)",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_lopp",
@@ -89,7 +96,7 @@
   {
    "fieldname": "cost",
    "fieldtype": "Float",
-   "label": "Finished Item Rate"
+   "label": "Finished Item Cost"
   },
   {
    "fieldname": "section_break_hqdv",
@@ -103,14 +110,17 @@
    "options": "Qutotation Sheet Operation Details"
   },
   {
+   "fetch_from": "grade.density",
    "fieldname": "density",
    "fieldtype": "Float",
    "label": "Density"
   },
   {
+   "default": "1",
    "fieldname": "quantity",
    "fieldtype": "Float",
-   "label": "Quantity"
+   "label": "Quantity",
+   "read_only": 1
   },
   {
    "fieldname": "raw_item_rate",
@@ -152,11 +162,43 @@
    "fieldname": "shape_info_section",
    "fieldtype": "Section Break",
    "label": "Shape Info"
+  },
+  {
+   "fieldname": "shrinkage_factor",
+   "fieldtype": "Float",
+   "label": "Shrinkage Factor (in %) "
+  },
+  {
+   "default": "0",
+   "fieldname": "is_strip",
+   "fieldtype": "Check",
+   "label": "Is Strip"
+  },
+  {
+   "fieldname": "total_wastage_in_kg",
+   "fieldtype": "Float",
+   "label": "Total Wastage (in KG)"
+  },
+  {
+   "fieldname": "finished_material_weight_in_kg",
+   "fieldtype": "Float",
+   "label": "Finished Material Weight (in KG)",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_machining_required",
+   "fieldtype": "Check",
+   "label": "Is Machining Required"
+  },
+  {
+   "fieldname": "column_break_jrau",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-29 17:34:15.732814",
+ "modified": "2024-11-05 12:46:47.115764",
  "modified_by": "Administrator",
  "module": "Quantbit Jayhind Erp",
  "name": "Quotation Sheet",
