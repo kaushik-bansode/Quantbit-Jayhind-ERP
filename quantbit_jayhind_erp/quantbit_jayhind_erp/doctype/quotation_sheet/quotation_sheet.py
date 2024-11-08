@@ -28,7 +28,7 @@ class QuotationSheet(Document):
 			self.cost = ((self.raw_item_rate or 0) * (self.weight or 0)) + machining_cost
   
 		elif self.shape == "Rectangle" and self.is_strip:
-			finished_strip_volume = self.length * self.breadth * self.height
+			finished_strip_volume = (self.length * 100) * (self.breadth * 100) * (self.height * 100)
 			adjusted_volume = (finished_strip_volume + self.total_wastage_in_kg) / (1 - (self.shrinkage_factor / 100))
 			raw_material_weight = (self.density * adjusted_volume) / 1000
 			self.weight = raw_material_weight + self.total_wastage_in_kg
@@ -44,7 +44,7 @@ class QuotationSheet(Document):
 			self.finished_material_weight_in_kg = (self.density * initial_volume) / 1000 
 			machining_cost = sum(i.machine_cost or 0 for i in self.get("operation_details"))
 			self.cost = ((self.raw_item_rate or 0) * (self.weight or 0)) + machining_cost
-   
+
 		
 
 

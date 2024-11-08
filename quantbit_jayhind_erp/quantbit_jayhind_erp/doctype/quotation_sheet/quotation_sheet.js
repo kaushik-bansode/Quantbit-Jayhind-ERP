@@ -13,4 +13,16 @@ frappe.ui.form.on("Quotation Sheet", {
             frm.refresh_fields();           
         }
 	},
+    is_strip: function(frm) {
+        if(frm.doc.is_strip){
+            frm.set_df_property('length', 'label', 'Length (in meters)');
+            frm.set_df_property('breadth', 'label', 'Breadth (in meters)');
+            frm.set_df_property('height', 'label', 'Height (in meters)');
+
+        }else{
+            frm.set_df_property('length', 'label', 'Length (in mm)');
+            frm.set_df_property('breadth', 'label', 'Breadth (in mm)');
+            frm.set_df_property('height', 'label', 'Height (in mm)');
+        }
+    }
 });
