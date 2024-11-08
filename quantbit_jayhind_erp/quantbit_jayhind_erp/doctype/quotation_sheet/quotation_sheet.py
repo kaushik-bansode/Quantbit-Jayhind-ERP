@@ -18,7 +18,6 @@ class QuotationSheet(Document):
 				frappe.throw("Total Wastage in Kg should be greater than 0")
 	
 	def calculate_quotation_cost(self):
-		
 		if self.shape == "Circle":
 			initial_volume = math.pi * self.height * ((self.outer_diameter / 2) ** 2 - (self.inner_diameter / 2) ** 2)
 			adjusted_volume = initial_volume / (1 - (self.shrinkage_factor / 100))

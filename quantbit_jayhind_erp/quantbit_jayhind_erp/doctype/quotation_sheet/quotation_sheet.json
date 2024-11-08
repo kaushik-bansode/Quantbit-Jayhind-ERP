@@ -1,21 +1,24 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "QST - .####### ",
+ "autoname": "naming_series:",
  "creation": "2024-10-29 09:24:32.754241",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "shape_info_section",
+  "dia_master",
   "shape",
   "shrinkage_factor",
   "column_break_ucj8",
   "grade",
+  "drawing_number",
   "total_wastage_in_kg",
   "column_break_tren",
   "density",
   "is_strip",
   "is_machining_required",
+  "naming_series",
   "section_break_asv0",
   "length",
   "inner_diameter",
@@ -25,13 +28,17 @@
   "column_break_lopp",
   "height",
   "section_break_gujn",
-  "weight",
-  "column_break_myle",
-  "finished_material_weight_in_kg",
-  "column_break_jrau",
   "quantity",
+  "column_break_myle",
+  "weight",
+  "column_break_jrau",
+  "finished_material_weight_in_kg",
   "section_break_hqdv",
   "operation_details",
+  "additional_cost_section",
+  "freight_mode",
+  "column_break_wrda",
+  "mode_of_dispatch",
   "section_break_ljrk",
   "raw_item_rate",
   "column_break_rfnn",
@@ -39,22 +46,30 @@
  ],
  "fields": [
   {
+   "fetch_from": "dia_master.shape",
    "fieldname": "shape",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Shape",
-   "options": "Shape"
+   "options": "Shape",
+   "reqd": 1
   },
   {
    "depends_on": "eval:doc.shape == \"Rectangle\"",
    "fieldname": "length",
    "fieldtype": "Float",
-   "label": "Length"
+   "in_list_view": 1,
+   "label": "Length",
+   "mandatory_depends_on": "eval:doc.shape == \"Rectangle\"",
+   "non_negative": 1
   },
   {
    "fieldname": "grade",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Grade",
-   "options": "Grade"
+   "options": "Grade",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_xqlz",
@@ -64,13 +79,17 @@
    "depends_on": "eval:doc.shape == \"Circle\";",
    "fieldname": "inner_diameter",
    "fieldtype": "Float",
-   "label": "Inner Diameter"
+   "label": "Inner Diameter",
+   "mandatory_depends_on": "eval:doc.shape == \"Circle\";",
+   "non_negative": 1
   },
   {
    "depends_on": "eval:doc.shape == \"Rectangle\"",
    "fieldname": "breadth",
    "fieldtype": "Float",
-   "label": "Breadth"
+   "label": "Breadth",
+   "mandatory_depends_on": "eval:doc.shape == \"Rectangle\"",
+   "non_negative": 1
   },
   {
    "fieldname": "weight",
@@ -86,12 +105,16 @@
    "depends_on": "eval:doc.shape == \"Circle\";",
    "fieldname": "outer_diameter",
    "fieldtype": "Float",
-   "label": "Outer Diameter"
+   "label": "Outer Diameter",
+   "mandatory_depends_on": "eval:doc.shape == \"Circle\";",
+   "non_negative": 1
   },
   {
    "fieldname": "height",
    "fieldtype": "Float",
-   "label": "Height"
+   "label": "Height",
+   "non_negative": 1,
+   "reqd": 1
   },
   {
    "fieldname": "cost",
@@ -104,6 +127,8 @@
    "label": "Operation/Machine"
   },
   {
+   "default": "1",
+   "depends_on": "eval:doc.is_machining_required",
    "fieldname": "operation_details",
    "fieldtype": "Table",
    "label": "Operation Details",
@@ -113,7 +138,10 @@
    "fetch_from": "grade.density",
    "fieldname": "density",
    "fieldtype": "Float",
-   "label": "Density"
+   "in_list_view": 1,
+   "label": "Density",
+   "non_negative": 1,
+   "reqd": 1
   },
   {
    "default": "1",
@@ -166,18 +194,23 @@
   {
    "fieldname": "shrinkage_factor",
    "fieldtype": "Float",
-   "label": "Shrinkage Factor (in %) "
+   "label": "Shrinkage Factor (in %) ",
+   "non_negative": 1,
+   "reqd": 1
   },
   {
    "default": "0",
+   "depends_on": "eval:doc.shape == \"Rectangle\"",
    "fieldname": "is_strip",
    "fieldtype": "Check",
-   "label": "Is Strip"
+   "label": "Is Skiving"
   },
   {
    "fieldname": "total_wastage_in_kg",
    "fieldtype": "Float",
-   "label": "Total Wastage (in KG)"
+   "label": "Total Wastage (in KG)",
+   "non_negative": 1,
+   "reqd": 1
   },
   {
    "fieldname": "finished_material_weight_in_kg",
@@ -186,7 +219,7 @@
    "read_only": 1
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "is_machining_required",
    "fieldtype": "Check",
    "label": "Is Machining Required"
@@ -194,15 +227,54 @@
   {
    "fieldname": "column_break_jrau",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "drawing_number",
+   "fieldtype": "Data",
+   "label": "Drawing Number"
+  },
+  {
+   "fieldname": "dia_master",
+   "fieldtype": "Link",
+   "label": "Dia Master",
+   "options": "Dia Master"
+  },
+  {
+   "fieldname": "freight_mode",
+   "fieldtype": "Select",
+   "label": "Freight Mode",
+   "options": "To Pay\nPaid"
+  },
+  {
+   "fieldname": "additional_cost_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Details"
+  },
+  {
+   "fieldname": "column_break_wrda",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mode_of_dispatch",
+   "fieldtype": "Select",
+   "label": "Mode Of Dispatch",
+   "options": "Road Transport\nRail Transport\nSea Freight (Maritime Transport)\nAir Freight (Air Transport)\nWaterways (Inland)\nPipeline Transport\nCourier Services\nIntermodal (Multimodal) Transport\nExpress/Time-Sensitive Dispatch\nFreight Forwarding\nPostal Services\nSpecialized Transport\nDrone Delivery\nHand Carry (Personal Delivery)"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "QST-"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-05 12:46:47.115764",
+ "modified": "2024-11-08 15:50:42.760512",
  "modified_by": "Administrator",
  "module": "Quantbit Jayhind Erp",
  "name": "Quotation Sheet",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

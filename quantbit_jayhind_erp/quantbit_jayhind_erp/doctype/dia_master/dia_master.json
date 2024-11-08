@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:dia_code",
+ "creation": "2024-11-08 12:21:59.924047",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "dia_code",
+  "length_in_mm",
+  "inner_diameter_in_mm",
+  "column_break_ayei",
+  "dia_name",
+  "breadth_in_mm",
+  "outer_diameter_in_mm",
+  "column_break_mfkq",
+  "shape",
+  "height_in_mm"
+ ],
+ "fields": [
+  {
+   "fieldname": "dia_code",
+   "fieldtype": "Data",
+   "label": "Dia Code",
+   "unique": 1
+  },
+  {
+   "depends_on": "eval:doc.shape == \"Rectangle\"",
+   "fieldname": "length_in_mm",
+   "fieldtype": "Float",
+   "label": "Length (in mm)"
+  },
+  {
+   "depends_on": "eval:doc.shape == \"Circle\"",
+   "fieldname": "inner_diameter_in_mm",
+   "fieldtype": "Float",
+   "label": "Inner Diameter (in mm)"
+  },
+  {
+   "fieldname": "column_break_ayei",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dia_name",
+   "fieldtype": "Data",
+   "label": "Dia Name"
+  },
+  {
+   "depends_on": "eval:doc.shape == \"Rectangle\"",
+   "fieldname": "breadth_in_mm",
+   "fieldtype": "Float",
+   "label": "Breadth (in mm)"
+  },
+  {
+   "depends_on": "eval:doc.shape == \"Circle\"",
+   "fieldname": "outer_diameter_in_mm",
+   "fieldtype": "Float",
+   "label": "Outer Diameter (in mm)"
+  },
+  {
+   "fieldname": "column_break_mfkq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shape",
+   "fieldtype": "Link",
+   "label": "Shape",
+   "options": "Shape"
+  },
+  {
+   "depends_on": "eval:doc.shape == \"Rectangle\"",
+   "fieldname": "height_in_mm",
+   "fieldtype": "Float",
+   "label": "Height (in mm)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-11-08 15:24:50.786031",
+ "modified_by": "Administrator",
+ "module": "Quantbit Jayhind Erp",
+ "name": "Dia Master",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
