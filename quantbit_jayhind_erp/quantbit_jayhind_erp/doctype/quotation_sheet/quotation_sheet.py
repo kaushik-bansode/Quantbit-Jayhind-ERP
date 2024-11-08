@@ -16,6 +16,7 @@ class QuotationSheet(Document):
 				frappe.throw("Operation Details are required when Machining is checked")
 			if (self.total_wastage_in_kg or 0) <= 0:
 				frappe.throw("Total Wastage in Kg should be greater than 0")
+    
 	
 	def calculate_quotation_cost(self):
 		if self.shape == "Circle":
