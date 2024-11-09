@@ -45,3 +45,5 @@ class QuotationSheet(Document):
 			self.finished_material_weight_in_kg = (self.density * initial_volume) / 1000 
 			machining_cost = sum(i.machine_cost or 0 for i in self.get("operation_details"))
 			self.cost = ((self.raw_item_rate or 0) * (self.weight or 0)) + machining_cost
+   
+   
